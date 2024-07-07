@@ -9,6 +9,7 @@ namespace Domain.Models
     {
         internal Dictionary<byte, Player> board = new Dictionary<byte, Player>();
 
+        public Player? Winner { get; private set; }
         public Player CurrentPlayer { get; private set; } = currentPlayer;
         public GameStatus GameStatus { get; private set; } = GameStatus.InProgress;
 
@@ -61,7 +62,8 @@ namespace Domain.Models
 
             if(IsWin())
             {
-                GameStatus = CurrentPlayer == Player.Crosses ? GameStatus.CrossesWins : GameStatus.NoughtsWins;
+                Winner = CurrentPlayer;
+                GameStatus =  GameStatus.Win;
             }
             else if(IsDraw())
             {

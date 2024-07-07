@@ -120,7 +120,8 @@ namespace UnitTests.Domain.Models
                 var playResult = game.Play(new PlayRequest(currentPlayer, move3));
 
                 // ASSERT
-                Assert.Equal(currentPlayer == Player.Crosses ? GameStatus.CrossesWins : GameStatus.NoughtsWins, game.GameStatus);
+                Assert.Equal(game.Winner, currentPlayer);
+                Assert.Equal(GameStatus.Win, game.GameStatus);
                 Assert.True(playResult.ResultType == PlayResultType.Success);
             }
         }

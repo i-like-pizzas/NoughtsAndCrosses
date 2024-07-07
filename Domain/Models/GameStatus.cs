@@ -4,7 +4,6 @@
     {
         InProgress,
         Draw,
-        CrossesWins,
-        NoughtsWins,
+        Win
     }
 }

@@ -66,11 +66,22 @@ namespace NoughtsAndCrosses
                 Console.WriteLine(string.Join(" | ", chunk.SelectMany(c => c.Value)));
         }
 
+        static void RenderInstructions()
+        {
+            Console.WriteLine("Instructions");
+            Console.WriteLine("Enter a value of 1 to 9 to mark a square on the grid.");
+            Console.WriteLine("1 | 2 | 3");
+            Console.WriteLine("4 | 5 | 6");
+            Console.WriteLine("7 | 8 | 9");
+        }
+
         static void NewGame(IGameService gameService)
         {
             Console.Clear();
             var game = gameService.NewGame();
             var gameIsOver = false;
+            RenderInstructions();
+            Console.WriteLine();
 
             do
             {
@@ -82,14 +93,21 @@ namespace NoughtsAndCrosses
                 {
                     var result = game.Play(new PlayRequest(game.CurrentPlayer, input.Value));
 
+                    Console.WriteLine("");
+
                     if(result.ResultType == PlayResultType.Success)
                     {
-                        Console.WriteLine(result.GameStatus);
-
                         if (result.GameStatus != GameStatus.InProgress)
                             gameIsOver = true;
 
+                        if (result.GameStatus == GameStatus.Draw)
+                            Console.WriteLine("Draw!");
+                        else if (result.GameStatus == GameStatus.Win)
+                            Console.WriteLine($"{game.Winner} wins!");
+
+                        Console.WriteLine("");
                         DrawBoard(game);
+                        Console.WriteLine("");
                     }
                     else
                     {
@@ -121,14 +139,6 @@ namespace NoughtsAndCrosses
         {
             var sb = new StringBuilder();
 
-          
-            sb.AppendLine("Instructions");
-            sb.AppendLine("Enter a value of 1 to 9 to mark a square on the grid.");
-            sb.AppendLine("1 | 2 | 3");
-            sb.AppendLine("4 | 5 | 6");
-            sb.AppendLine("7 | 8 | 9");
-
-            sb.AppendLine();
             sb.AppendLine("Enter 'N' to start new game");
 
             return sb.ToString();
