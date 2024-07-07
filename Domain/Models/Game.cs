@@ -1,18 +1,25 @@
-﻿namespace Domain.Models
+﻿
+namespace Domain.Models
 {
-    public class Game : IGame
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="currentPlayer">The player going first.</param>
+    public class Game(Player currentPlayer) : IGame
     {
-        public GameStatus GetCurrentGameStatus()
+        internal Dictionary<byte, Player?> board = new Dictionary<byte, Player?>();
+
+        public Player CurrentPlayer { get; private set; } = currentPlayer;
+
+        public Dictionary<byte, Player?> Board
         {
-            throw new NotImplementedException();
+            get { return board; }
+            internal set { board = value; }
         }
 
-        public Player GetCurrentPlayer()
-        {
-            throw new NotImplementedException();
-        }
+        public GameStatus GameStatus => throw new NotImplementedException();
 
-        public PlayResult Play()
+        public PlayResult Play(PlayRequest request)
         {
             throw new NotImplementedException();
         }

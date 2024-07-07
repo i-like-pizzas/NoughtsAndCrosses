@@ -8,10 +8,12 @@ namespace Domain.Models
 {
     public interface IGame
     {
-        PlayResult Play();
+        PlayResult Play(PlayRequest request);
 
-        Player GetCurrentPlayer();
+        Player CurrentPlayer { get; }
 
-        GameStatus GetCurrentGameStatus();
+        GameStatus GameStatus { get; }
+
+        Dictionary<byte, Player?> Board { get; }
     }
 }
