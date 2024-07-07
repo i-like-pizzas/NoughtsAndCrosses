@@ -1,5 +1,4 @@
-﻿using ApplicationServices.DTO;
-using Domain.Models;
+﻿using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +9,6 @@ namespace ApplicationServices.Services
 {
     public interface IGameService
     {
-        PlayResult Play(PlayRequest request);
-
-        string GetInstructions();
+        IGame NewGame();
     }
 }
