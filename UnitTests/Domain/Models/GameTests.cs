@@ -110,7 +110,7 @@ namespace UnitTests.Domain.Models
                 var game = new Game(playerType);
                 var currentPlayer = game.CurrentPlayer;
 
-                game.Board = new Dictionary<byte, Player?>
+                game.Board = new Dictionary<byte, Player>
                 {
                     { move1, currentPlayer },
                     { move2, currentPlayer }
@@ -132,7 +132,7 @@ namespace UnitTests.Domain.Models
             var winner = Player.Noughts;
             var game = new Game(winner);
 
-            game.Board = new Dictionary<byte, Player?>
+            game.Board = new Dictionary<byte, Player>
             {
                 { 1, winner },
                 { 2, winner }
@@ -153,7 +153,7 @@ namespace UnitTests.Domain.Models
             var currentPlayer = Player.Noughts;
             var game = new Game(currentPlayer);
             
-            game.Board = new Dictionary<byte, Player?>
+            game.Board = new Dictionary<byte, Player>
             {
                 { 1, Player.Crosses },
             };

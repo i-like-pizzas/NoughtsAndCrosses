@@ -14,6 +14,6 @@ namespace Domain.Models
 
         GameStatus GameStatus { get; }
 
-        Dictionary<byte, Player?> Board { get; }
+        Dictionary<byte, Player> Board { get; }
     }
 }
