@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoughtsAndCrosses", "NoughtsAndCrosses\NoughtsAndCrosses.csproj", "{1577B80D-1A31-47C6-B9F0-58096D877C4C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "NoughtsAndCrosses\UI.csproj", "{1577B80D-1A31-47C6-B9F0-58096D877C4C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{1C6293CF-2E9F-4AFF-A121-C5064A1C7E99}"
 EndProject
