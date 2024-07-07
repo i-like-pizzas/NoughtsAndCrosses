@@ -54,6 +54,8 @@ namespace Domain.Models
                 return new PlayResult(PlayResultType.WrongPlayer, GameStatus);
             else if(board.ContainsKey(request.position))
                 return new PlayResult(PlayResultType.InvalidPosition, GameStatus);
+            else if(request.position < 1 || request.position > 9)
+                return new PlayResult(PlayResultType.InvalidPosition, GameStatus);
 
             board.Add(request.Position, request.Player);
 

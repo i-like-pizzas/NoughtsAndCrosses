@@ -147,7 +147,7 @@ namespace UnitTests.Domain.Models
         }
 
         [Fact]
-        public void Play_PlayResultTypeIsInvalidPositionIfTheMoveIsIllegal()
+        public void Play_PlayResultTypeIsInvalidPositionIfTheSquareIsAlreadyMarked()
         {
             // ARRANGE
             var currentPlayer = Player.Noughts;
@@ -160,6 +160,22 @@ namespace UnitTests.Domain.Models
 
             // ACT
             var playResult = game.Play(new PlayRequest(currentPlayer, 1));
+
+            // ASSERT
+            Assert.True(playResult.ResultType == PlayResultType.InvalidPosition);
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(10)]
+        public void Play_PlayResultTypeIsInvalidPositionIfTheSquareDoesNotExist(byte position)
+        {
+            // ARRANGE
+            var currentPlayer = Player.Noughts;
+            var game = new Game(currentPlayer);
+
+            // ACT
+            var playResult = game.Play(new PlayRequest(currentPlayer, position));
 
             // ASSERT
             Assert.True(playResult.ResultType == PlayResultType.InvalidPosition);
