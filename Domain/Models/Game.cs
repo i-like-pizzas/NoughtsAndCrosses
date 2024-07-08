@@ -7,7 +7,7 @@ namespace Domain.Models
     /// <param name="currentPlayer">The player going first.</param>
     public class Game(Player currentPlayer) : IGame
     {
-        internal Dictionary<byte, Player> board = new Dictionary<byte, Player>();
+        internal Dictionary<byte, Player> board = [];
 
         public Player? Winner { get; private set; }
         public Player CurrentPlayer { get; private set; } = currentPlayer;
@@ -15,7 +15,7 @@ namespace Domain.Models
 
         public Dictionary<byte, Player> Board
         {
-            get { return board; }
+            get { return new Dictionary<byte, Player>(board); }
             internal set { board = value; }
         }
 
